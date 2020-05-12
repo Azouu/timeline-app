@@ -1,0 +1,10 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>resources/eye.png</file>
+    <file>resources/crossed-eye.png</file>
+    <file>resources/layer.png</file>
+    <file>resources/delete.png</file>
+    <file>resources/up.png</file>
+    <file>resources/down.png</file>
+</qresource>
+</RCC>
