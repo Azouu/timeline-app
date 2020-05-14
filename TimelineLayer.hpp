@@ -11,20 +11,25 @@ class TimelineLayer : public QWidget
   Q_OBJECT
 
   public :
-   explicit TimelineLayer(QWidget *parent = nullptr);
+    explicit TimelineLayer(int index, QWidget *parent = nullptr);
    ~TimelineLayer();
+    void setSelected(bool);
 
-  protected :
-  void mousePressEvent(QMouseEvent *event) override; 
-  void focusOutEvent(QFocusEvent *event) override;
-  
+    int getIndex() const { return m_index; }
+    void setIndex(int index) { m_index = index; }
+
+
+protected :
+  void mousePressEvent(QMouseEvent *event) override;
+
   private :
     Ui::timelinelayer ui;
     bool m_isVisible;
     bool m_isSelected;
+    int m_index;
+signals :
+    void selected(int);
 
-   signals :
-
-  private slots :
+private slots :
     void toggleVisibility();
 };

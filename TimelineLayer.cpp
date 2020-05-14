@@ -2,8 +2,9 @@
 #include <TimelineLayer.hpp>
 
 
-TimelineLayer::TimelineLayer(QWidget *parent)
-    : QWidget(parent) 
+TimelineLayer::TimelineLayer(int index, QWidget *parent)
+        : m_index(index),
+          QWidget(parent)
 {
 
     m_isVisible = true;
@@ -15,8 +16,8 @@ TimelineLayer::TimelineLayer(QWidget *parent)
     item1->setBrush(QBrush(QColor(60,60,60)));
     scene->addItem(item1);
     ui.timeline->setScene(scene);
-    ui.timeline->setAlignment(Qt::AlignLeft);   
-    
+    ui.timeline->setAlignment(Qt::AlignLeft);
+
     connect(ui.visibilityButton, &QPushButton::clicked, this, &TimelineLayer::toggleVisibility);
 
 }
@@ -32,16 +33,18 @@ void TimelineLayer::toggleVisibility() {
   }
 }
 
-
-
 void TimelineLayer::mousePressEvent(QMouseEvent *event) {
-  m_isSelected = true;
-  setStyleSheet(("background-color : #4da6ff; color : #fff; font-size : 12px"));
+// setselected is done by frame
+  emit selected(m_index);
 }
 
-void TimelineLayer::focusOutEvent(QFocusEvent *event) {
-  m_isSelected = false;
-  setStyleSheet("font-size : 12px");
+void TimelineLayer::setSelected(bool s){
+  m_isSelected = s;
+  if(m_isSelected)
+    setStyleSheet(("background-color : #4da6ff; color : #fff; font-size : 12px"));
+  else
+    setStyleSheet("font-size : 12px");
+
 }
 
 TimelineLayer::~TimelineLayer() {

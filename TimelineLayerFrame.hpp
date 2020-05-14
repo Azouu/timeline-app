@@ -1,5 +1,5 @@
 
-#pragma once 
+#pragma once
 #include "ui_timelinelayerframe.h"
 
 #include <QWidget>
@@ -17,13 +17,15 @@ class TimelineLayerFrame : public QWidget
 
    void addTimelineLayer(TimelineLayer *tlLayer);
 
-  private : 
+  private :
     Ui::mainWidget ui;
     QVBoxLayout *m_layout;
 
-    
+    std::vector<TimelineLayer*> m_layers;
+
   signals :
 
   public slots :
+    void updateSelected(int index);
 
 };
