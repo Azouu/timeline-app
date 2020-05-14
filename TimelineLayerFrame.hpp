@@ -27,5 +27,5 @@ class TimelineLayerFrame : public QWidget
 
   public slots :
     void updateSelected(int index);
-
+    void paintEvent(QPaintEvent *) override;
 };
