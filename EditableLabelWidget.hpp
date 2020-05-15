@@ -15,9 +15,11 @@ class EditableLabelWidget : public QStackedWidget
 public:
     explicit EditableLabelWidget(QWidget *parent = nullptr);
     ~EditableLabelWidget();
+    void setLabelText(QString text);
 
 protected : 
     void mouseDoubleClickEvent(QMouseEvent *event) override;
+
 
 private:
     Ui::EditableLabelWidget *ui;

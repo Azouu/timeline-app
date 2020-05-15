@@ -27,10 +27,6 @@ int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
 
   TimelineLayerFrame tlframe(0);
-  TimelineLayer tl(0);
-  tlframe.addTimelineLayer(&tl);
-  TimelineLayer tl2(1);
-  tlframe.addTimelineLayer(&tl2);
   tlframe.show();
   return app.exec();
 }

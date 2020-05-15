@@ -2,12 +2,11 @@
 #include <TimelineLayer.hpp>
 
 
-TimelineLayer::TimelineLayer(int index, QWidget *parent)
-        : m_index(index),
-          QWidget(parent)
+TimelineLayer::TimelineLayer(QWidget *parent) :  QWidget(parent)
 {
 
     m_isVisible = true;
+    m_isSelected = false;
 
     ui.setupUi(this);
 
@@ -35,18 +34,18 @@ void TimelineLayer::toggleVisibility() {
 
 void TimelineLayer::mousePressEvent(QMouseEvent *event) {
 // setselected is done by frame
-  emit selected(m_index);
+  emit selected(this);
 }
 
 void TimelineLayer::setSelected(bool s){
   m_isSelected = s;
   if(m_isSelected)
     setStyleSheet(("background-color : #4da6ff; color : #fff; font-size : 12px"));
-  else
+   else
     setStyleSheet("font-size : 12px");
 
 }
 
-TimelineLayer::~TimelineLayer() {
-
+void TimelineLayer::setLayerName(QString name) {
+  ui.stackedWidget->setLabelText(name);
 }

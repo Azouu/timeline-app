@@ -37,7 +37,7 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,12">
+  <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,0,0">
    <property name="spacing">
     <number>1</number>
    </property>
@@ -145,6 +145,9 @@
       </item>
      </layout>
     </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
    </item>
    <item>
     <widget class="QGraphicsView" name="timeline">

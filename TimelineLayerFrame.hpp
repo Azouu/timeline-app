@@ -16,16 +16,30 @@ class TimelineLayerFrame : public QWidget
    ~TimelineLayerFrame();
 
    void addTimelineLayer(TimelineLayer *tlLayer);
+   void unselectAll();
+   TimelineLayer* getLayerAt(int index);
+   TimelineLayer* getSelectedLayer();
+   int getLayerID(TimelineLayer* layer);
+   bool hasSelected();
+   bool isBackgroundLayer(int index);
+   int getNextLayerNumber();
+   TimelineLayer* initializeBackgroundLayer();
+   void updateSelectedById(int index);
 
   private :
     Ui::mainWidget ui;
     QVBoxLayout *m_layout;
-
-    std::vector<TimelineLayer*> m_layers;
+    
+    int m_cptLayerName;
+    int m_selectedLayerId;
+    int m_layerCount;
 
   signals :
 
   public slots :
-    void updateSelected(int index);
-    void paintEvent(QPaintEvent *) override;
+    void updateSelected(TimelineLayer* layer);
+    void deleteSelectedLayer();
+    void upSelectedLayer();
+    void downSelectedLayer();
+    void addLayerOnTop();
 };

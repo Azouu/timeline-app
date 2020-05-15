@@ -47,3 +47,7 @@ void EditableLabelWidget::validateLineEdit()
         ui->lineEdit->clear();
     }
 }
+
+void EditableLabelWidget::setLabelText(QString text) {
+    ui->label->setText(text);
+}
